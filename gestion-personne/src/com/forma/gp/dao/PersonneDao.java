@@ -1,5 +1,7 @@
 package com.forma.gp.dao;
 
+import java.util.List;
+
 import com.forma.gp.entities.Personne;
 
 public class PersonneDao {
@@ -16,4 +18,8 @@ public class PersonneDao {
 
 	}
 
+	public List<Personne> findAll() {
+		return null;
+
+	}
 }
