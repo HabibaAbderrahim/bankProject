@@ -1,7 +1,9 @@
 package com.forma.gp.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.forma.gp.entities.Personne;
@@ -37,7 +39,7 @@ public class PersonneDao {
 	}
 
 	public void delete(String cin) throws ClassNotFoundException, SQLException {
-		
+
 		String sql = "delete from personne where cin = ?";
 		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
 		statement.setString(1, cin);
@@ -46,8 +48,27 @@ public class PersonneDao {
 
 	}
 
-	public List<Personne> findAll() {
-		return null;
+	public List<Personne> findAll() throws ClassNotFoundException, SQLException {
+
+		String sql = "select * from personne";
+		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
+        //ResultSet like table 
+		ResultSet result = statement.executeQuery();
+		List<Personne> list = new ArrayList<>();
+		//Add person in our return list
+		while (result.next()) {
+            
+			//a chaque fois objet jdid
+			Personne personne = new Personne();
+			personne.setCin(result.getString("cin"));
+			personne.setNom(result.getString("nom"));
+			personne.setPrenom(result.getString("prenom"));
+			personne.setAdresse(result.getString("adresse"));
+			personne.setEmail(result.getString("email"));
+            
+			list.add(personne);
+		}
+		return list;
 
 	}
 }
