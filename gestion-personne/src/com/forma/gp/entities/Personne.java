@@ -3,7 +3,7 @@ package com.forma.gp.entities;
 import java.io.Serializable;
 
 public class Personne implements Serializable {
-	
+
 	private String cin;
 	private String nom;
 	private String prenom;
@@ -62,6 +62,12 @@ public class Personne implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Personne [cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", email="
+				+ email + "]";
 	}
 
 }
