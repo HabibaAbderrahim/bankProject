@@ -10,18 +10,29 @@ import com.forma.gp.utils.ConnexionUtil;
 public class PersonneDao {
 
 	public void save(Personne personne) throws ClassNotFoundException, SQLException {
+
 		String sql = "insert into personne(cin,nom,prenom,adresse,email) values(?,?,?,?,?)";
 		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
-		statement.setString(0, personne.getCin());
+		statement.setString(1, personne.getCin());
+		statement.setString(2, personne.getNom());
+		statement.setString(3, personne.getPrenom());
+		statement.setString(4, personne.getAdresse());
+		statement.setString(5, personne.getEmail());
+
+		statement.executeUpdate();
+	}
+
+	public void update(Personne personne) throws ClassNotFoundException, SQLException {
+
+		String sql = "update personne set nom=? ,prenom=? , adress=? , email =? where cin = ?";
+		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
+		statement.setString(5, personne.getCin());
 		statement.setString(1, personne.getNom());
 		statement.setString(2, personne.getPrenom());
 		statement.setString(3, personne.getAdresse());
 		statement.setString(4, personne.getEmail());
 
 		statement.executeUpdate();
-	}
-
-	public void update(Personne personne) {
 
 	}
 
