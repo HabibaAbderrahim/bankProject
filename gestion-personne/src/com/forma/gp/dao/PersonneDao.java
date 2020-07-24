@@ -24,7 +24,7 @@ public class PersonneDao {
 
 	public void update(Personne personne) throws ClassNotFoundException, SQLException {
 
-		String sql = "update personne set nom=? ,prenom=? , adress=? , email =? where cin = ?";
+		String sql = "update personne set nom=? ,prenom=? , adresse=? , email =? where cin = ?";
 		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
 		statement.setString(5, personne.getCin());
 		statement.setString(1, personne.getNom());
@@ -36,7 +36,13 @@ public class PersonneDao {
 
 	}
 
-	public void delete(String cin) {
+	public void delete(String cin) throws ClassNotFoundException, SQLException {
+		
+		String sql = "delete from personne where cin = ?";
+		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
+		statement.setString(1, cin);
+
+		statement.executeUpdate();
 
 	}
 
