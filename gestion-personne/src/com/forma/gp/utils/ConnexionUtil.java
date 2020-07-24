@@ -16,7 +16,7 @@ public final class ConnexionUtil {
 
 		// Install driver
 		Class.forName("com.mysql.jdbc.Driver");
-		connection= DriverManager.getConnection(url, username, password);
+		connection = DriverManager.getConnection(url, username, password);
 
 	}
 
@@ -32,8 +32,12 @@ public final class ConnexionUtil {
 		return instance;
 	}
 
+	public Connection getConnection() {
+		return connection;
+	}
+
 	public static void main(String[] args) {
-          try {
+		try {
 			getInstance();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -42,6 +46,6 @@ public final class ConnexionUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-          
+
 	}
 }
