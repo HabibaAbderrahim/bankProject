@@ -63,9 +63,17 @@ public class Test {
 		}
 
 		// findall
+		/*
+		 * try { List<Personne> list=personneDao.findAll(); for(Personne p : list) {
+		 * System.out.println(p); } } catch (ClassNotFoundException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); } catch (SQLException e) { //
+		 * TODO Auto-generated catch block e.printStackTrace(); }
+		 */
+		// findbycin
+
 		try {
-			List<Personne> list=personneDao.findAll();
-			for(Personne p : list) {
+			List<Personne> list = personneDao.findByCin("0213457");
+			for (Personne p : list) {
 				System.out.println(p);
 			}
 		} catch (ClassNotFoundException e) {
@@ -76,6 +84,32 @@ public class Test {
 			e.printStackTrace();
 		}
 
+		// findbyemail
+		try {
+			List<Personne> list = personneDao.findByEmail("heub@gmail.com");
+			for (Personne p : list) {
+				System.out.println(p);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// findByemail and cin
+		try {
+			List<Personne> list = personneDao.findByEmail("hiba@gmail.com", "0213457");
+			for (Personne p : list) {
+				System.out.println(p);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
