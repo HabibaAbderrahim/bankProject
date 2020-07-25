@@ -72,7 +72,7 @@ public class PersonneDao {
 
 	}
 
-	public List<Personne> findByCin(String cin) throws ClassNotFoundException, SQLException {
+	public Personne findByCin(String cin) throws ClassNotFoundException, SQLException {
 
 		String sql = "select * from personne where cin = ? ";
 		PreparedStatement statement = ConnexionUtil.getInstance().getConnection().prepareStatement(sql);
@@ -80,7 +80,7 @@ public class PersonneDao {
 		statement.setString(1, cin);
 		// ResultSet like table
 		ResultSet result = statement.executeQuery();
-		List<Personne> list = new ArrayList<>();
+	
 
 		// Add person in our return list
 		while (result.next()) {
@@ -92,9 +92,9 @@ public class PersonneDao {
 			personne.setAdresse(result.getString("adresse"));
 			personne.setEmail(result.getString("email"));
 
-			list.add(personne);
+			return personne;
 		}
-		return list ;
+		return null ;
 	}
 
 	public List<Personne> findByEmail(String email) throws ClassNotFoundException, SQLException {

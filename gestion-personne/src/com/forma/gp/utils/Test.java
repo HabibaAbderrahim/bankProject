@@ -71,7 +71,7 @@ public class Test {
 		 */
 		// findbycin
 
-		try {
+		/*try {
 			List<Personne> list = personneDao.findByCin("0213457");
 			for (Personne p : list) {
 				System.out.println(p);
@@ -82,7 +82,7 @@ public class Test {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 		// findbyemail
 		try {
