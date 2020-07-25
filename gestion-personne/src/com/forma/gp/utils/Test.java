@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.forma.gp.dao.PersonneDao;
 import com.forma.gp.entities.Personne;
+import com.forma.gp.model.MessageResponse;
+import com.forma.gp.services.PersonneService;
 
 public class Test {
 
@@ -71,18 +73,12 @@ public class Test {
 		 */
 		// findbycin
 
-		/*try {
-			List<Personne> list = personneDao.findByCin("0213457");
-			for (Personne p : list) {
-				System.out.println(p);
-			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		/*
+		 * try { List<Personne> list = personneDao.findByCin("0213457"); for (Personne p
+		 * : list) { System.out.println(p); } } catch (ClassNotFoundException e) { //
+		 * TODO Auto-generated catch block e.printStackTrace(); } catch (SQLException e)
+		 * { // TODO Auto-generated catch block e.printStackTrace(); }
+		 */
 
 		// findbyemail
 		try {
@@ -110,6 +106,21 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	
 
+	// saveService
+	Personne personne = new Personne("02134877", "biba", "Abd", "Tunis", "hbib@gmail.com");
+	PersonneService personneService = new PersonneService();
+		try {
+			MessageResponse result =personneService.save(personne);
+			System.out.println(result.getMessage()+" "+result.isSuccess());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 
+	}
 }
