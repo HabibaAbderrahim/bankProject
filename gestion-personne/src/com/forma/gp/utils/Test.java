@@ -121,6 +121,19 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	 
+		
+	//DeleteService
+		try {
+			MessageResponse res = personneService.delete(personne.getCin());
+			System.out.println(res.getMessage()+" "+res.isSuccess());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
 	}
 }
