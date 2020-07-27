@@ -35,7 +35,7 @@ public class PersonneController extends HttpServlet {
 		try {
 
 			MessageResponse result = personneService.save(personne);
-			
+
 			req.setAttribute("list", personneService.findAll());
 
 			if (result.isSuccess()) {
@@ -63,8 +63,26 @@ public class PersonneController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+
+		String action = req.getParameter("action");
+		String cin = req.getParameter("cin");
+
+		if (action.equalsIgnoreCase("delete")) {
+			try {
+				personneService.delete(cin);
+				//5alini 
+				dispatcher = req.getRequestDispatcher("/ListPerson.jsp");
+				// n3awed njarchi list  m3A SUUP
+				req.setAttribute("list", personneService.findAll());
+				dispatcher.forward(req, resp);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
