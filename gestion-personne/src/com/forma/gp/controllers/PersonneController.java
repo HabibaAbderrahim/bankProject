@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.Dispatch;
 
 import com.forma.gp.entities.Personne;
+import com.forma.gp.model.MessageResponse;
 import com.forma.gp.services.PersonneService;
 
 @WebServlet("/personneCtr")
@@ -32,11 +33,25 @@ public class PersonneController extends HttpServlet {
 
 		personne = new Personne(cin, nom, prenom, adresse, email);
 		try {
+
+			MessageResponse result = personneService.save(personne);
 			
-			personneService.save(personne);
-			dispatcher = req.getRequestDispatcher("/AddPerson.jsp");
+			req.setAttribute("list", personneService.findAll());
+
+			if (result.isSuccess()) {
+
+				// take me to
+				dispatcher = req.getRequestDispatcher("/ListPerson.jsp");
+
+			} else {
+
+				dispatcher = req.getRequestDispatcher("/AddPerson.jsp");
+				req.setAttribute("msg", result.getMessage());
+
+			}
+
 			dispatcher.forward(req, resp);
-			
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
