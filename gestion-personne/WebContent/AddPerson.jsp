@@ -42,6 +42,9 @@
 				<td><INPUT type="submit" value="valider" /></td>
 				<td><INPUT type="reset" value="Annuler" />
 			</tr>
+			
+			<c:out value="${msg}"></c:out>
+			
 		</TABLE>
 
 
