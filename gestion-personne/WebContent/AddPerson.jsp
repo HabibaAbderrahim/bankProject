@@ -13,11 +13,12 @@
 <body>
 
 	<form action="personneCtr" method="post">
+		<!--  action + method = pattern this how the vue accs the cntr -->
 
 		<TABLE>
 			<tr>
 				<td>CIN</td>
-				<td><INPUT type="text" name="cin"  /></td>
+				<td><INPUT type="text" name="cin" /></td>
 			</tr>
 
 			<tr>
