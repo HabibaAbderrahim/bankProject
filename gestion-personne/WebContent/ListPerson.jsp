@@ -22,24 +22,33 @@
 					<th>Prénom</th>
 					<th>Adresse</th>
 					<th>Email</th>
+					<th colspan="2">operation</th>
 				</tr>
 			</THEAD>
 
 			<TBODY>
-               
-               <c:forEach items="${list}" var ="i">
-               
-               <tr>
-                  <td>${i.cin}</td><!-- entity -->
-                  <td>${i.nom}</td>
-                  <td>${i.prenom}</td>
-                  <td>${i.adresse}</td>
-                   <td>${i.email}</td>
-                  
-                  
-               </tr>
-               
-               </c:forEach>
+
+				<c:forEach items="${list}" var="i">
+
+					<tr>
+						<td>${i.cin}</td>
+						<!-- entity -->
+						<td>${i.nom}</td>
+						<td>${i.prenom}</td>
+						<td>${i.adresse}</td>
+						<td>${i.email}</td>
+						
+						<!--  -->
+						<td><A href="personneCtr?action=delete&cin=${i.cin}">supprimer</A></td>
+						<td><A> Editer </A></td>
+
+
+
+
+
+					</tr>
+
+				</c:forEach>
 
 
 			</TBODY>
