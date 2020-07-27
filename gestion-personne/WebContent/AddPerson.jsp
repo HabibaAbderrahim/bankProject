@@ -17,25 +17,29 @@
 		<TABLE>
 			<tr>
 				<td>CIN</td>
-				<td><INPUT type="text" /></td>
+				<td><INPUT type="text" name="cin"  /></td>
 			</tr>
 
 			<tr>
 				<td>Nom</td>
-				<td><INPUT type="text" /></td>
+				<td><INPUT type="text" name="nom" /></td>
 			</tr>
 
 			<tr>
 				<td>Prénom</td>
-				<td><INPUT type="text" /></td>
+				<td><INPUT type="text" name="prenom" /></td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><INPUT type="text" /></td>
+				<td><INPUT type="text" name="email" /></td>
 			</tr>
 			<tr>
 				<td>Adresse</td>
-				<td><INPUT type="text" /></td>
+				<td><INPUT type="text" name="adresse" /></td>
+			</tr>
+			<tr>
+				<td><INPUT type="submit" value="valider" /></td>
+				<td><INPUT type="reset" value="Annuler" />
 			</tr>
 		</TABLE>
 
