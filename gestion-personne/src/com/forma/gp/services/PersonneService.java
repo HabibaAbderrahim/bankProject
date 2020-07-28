@@ -35,7 +35,7 @@ public class PersonneService {
 		if (list.isEmpty()) {
 			
 			list = personneDao.findByEmail(personne.getEmail());
-		    if (!list.isEmpty()) {
+		    if (list.isEmpty()) {
 			return new MessageResponse(false, "Email existant");
 		}
 			
