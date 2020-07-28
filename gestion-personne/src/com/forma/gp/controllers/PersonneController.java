@@ -30,12 +30,19 @@ public class PersonneController extends HttpServlet {
 		String nom = req.getParameter("nom");
 		String prenom = req.getParameter("prenom");
 		String adresse = req.getParameter("adresse");
+		String action = req.getParameter("action");
 
 		personne = new Personne(cin, nom, prenom, adresse, email);
 		try {
 
-			MessageResponse result = personneService.save(personne);
-
+			MessageResponse result;
+			
+            if(action.equalsIgnoreCase("edit")) {
+            	result = personneService.update(personne);
+            	
+            }else {
+			   result=personneService.save(personne);
+            }
 			req.setAttribute("list", personneService.findAll());
 
 			if (result.isSuccess()) {
@@ -70,9 +77,9 @@ public class PersonneController extends HttpServlet {
 		if (action.equalsIgnoreCase("delete")) {
 			try {
 				personneService.delete(cin);
-				//5alini 
+				// 5alini
 				dispatcher = req.getRequestDispatcher("/ListPerson.jsp");
-				// n3awed njarchi list  m3A SUUP
+				// n3awed njarchi list m3A SUUP
 				req.setAttribute("list", personneService.findAll());
 				dispatcher.forward(req, resp);
 			} catch (ClassNotFoundException e) {
@@ -82,6 +89,20 @@ public class PersonneController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if (action.equalsIgnoreCase("edit")) {
+			dispatcher = req.getRequestDispatcher("/AddPerson.jsp");
+			try {
+				req.setAttribute("personneCharge", personneService.findByCin(cin));
+				req.setAttribute("action", "edit");
+				dispatcher.forward(req, resp);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 
