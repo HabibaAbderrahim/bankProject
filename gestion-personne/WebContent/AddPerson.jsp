@@ -18,25 +18,25 @@
 		<TABLE>
 			<tr>
 				<td>CIN</td>
-				<td><INPUT type="text" name="cin" /></td>
+				<td><INPUT type="text" name="cin" value="${personneCharge.cin}" /></td>
 			</tr>
 
 			<tr>
 				<td>Nom</td>
-				<td><INPUT type="text" name="nom" /></td>
+				<td><INPUT type="text" name="nom" value="${personneCharge.nom}" /></td>
 			</tr>
 
 			<tr>
 				<td>Prénom</td>
-				<td><INPUT type="text" name="prenom" /></td>
+				<td><INPUT type="text" name="prenom" value="${personneCharge.prenom}" /></td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><INPUT type="text" name="email" /></td>
+				<td><INPUT type="text" name="email" value="${personneCharge.email}"/></td>
 			</tr>
 			<tr>
 				<td>Adresse</td>
-				<td><INPUT type="text" name="adresse" /></td>
+				<td><INPUT type="text" name="adresse"  value="${personneCharge.adresse}"/></td>
 			</tr>
 			<tr>
 				<td><INPUT type="submit" value="valider" /></td>
@@ -46,6 +46,8 @@
 			<c:out value="${msg}"></c:out>
 			
 		</TABLE>
+		
+		<input type ="hidden"  value="${action}" name="action"/>
 
 
 
