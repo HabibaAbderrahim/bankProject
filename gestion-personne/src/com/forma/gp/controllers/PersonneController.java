@@ -43,12 +43,13 @@ public class PersonneController extends HttpServlet {
             }else {
 			   result=personneService.save(personne);
             }
-			req.setAttribute("list", personneService.findAll());
+			
 
 			if (result.isSuccess()) {
 
 				// take me to
 				dispatcher = req.getRequestDispatcher("/ListPerson.jsp");
+				req.setAttribute("list", personneService.findAll());
 
 			} else {
 

@@ -38,10 +38,11 @@
 						<td>${i.adresse}</td>
 						<td>${i.email}</td>
 						
-						<!--  -->
+						<!-- more than 1 method actionname enehou eli bech yd5olou -->
 						<td><A href="personneCtr?action=delete&cin=${i.cin}">supprimer</A></td>
-						<td><A> Editer </A></td>
-
+						<td><A href="personneCtr?action=edit&cin=${i.cin}">Editer</A></td>
+						
+                         
 
 
 
