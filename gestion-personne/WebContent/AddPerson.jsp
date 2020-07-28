@@ -16,11 +16,18 @@
 		<!--  action + method = pattern this how the vue accs the cntr -->
 
 		<TABLE>
-			<tr>
+		    <tr>
 				<td>CIN</td>
-				<td><INPUT type="text" name="cin" value="${personneCharge.cin}" /></td>
+				<td><c:choose>
+						<c:when test="${action=='edit'}">
+							<input type="text" name="cin" value="${personne.cin}"
+								readonly="readonly">
+						</c:when>
+						<c:otherwise>
+							<input type="text" name="cin" value="${personne.cin}">
+						</c:otherwise>
+					</c:choose></td>
 			</tr>
-
 			<tr>
 				<td>Nom</td>
 				<td><INPUT type="text" name="nom" value="${personneCharge.nom}" /></td>
